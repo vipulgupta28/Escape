@@ -1,7 +1,10 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Guidelines: React.FC = () => {
+  const navigate = useNavigate();
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -142,6 +145,10 @@ const Guidelines: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
+            onClick={()=>{
+              navigate("/")
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             Get Started
           </motion.button>

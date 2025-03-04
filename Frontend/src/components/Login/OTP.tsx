@@ -1,13 +1,39 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import axios from "axios";
 
 const OTP: React.FC = () => {
   const inputRef = useRef<Array<HTMLInputElement | null>>([]);
-  const [timer, setTimer] = useState(60); // 60 seconds timer
+  const [timer, setTimer] = useState(60); 
+
+  const [otp, setOtp] = useState(["", "", "", ""]);
+
+  const location = useLocation();
+
+  const email = location.state?.email || "";
 
   const navigate = useNavigate();
+
+  const handleVerify = async() =>{
+    
+    const enteredOtp = Number(otp.join(""));
+    try {
+       await axios.post("http://localhost:3000/verify-otp", {
+        email, 
+        otp: enteredOtp,
+      });
+
+    
+     localStorage.setItem("user", JSON.stringify({ email }));
+      navigate("/"); 
+    } catch (error) {
+      alert("Invalid OTP. Please try again.");
+      console.log(error)
+    }
+  
+  }
 
   // Animation variants
   const containerVariants = {
@@ -37,6 +63,9 @@ const OTP: React.FC = () => {
     const value = event.target.value;
 
     if (/^\d$/.test(value)) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
       if (index < inputRef.current.length - 1) {
         inputRef.current[index + 1]?.focus();
       }
@@ -67,7 +96,7 @@ const OTP: React.FC = () => {
     console.log("Resending OTP...");
   };
 
-  const indexes = [0, 1, 2, 3]; // 4-digit OTP
+  const indexes = [0, 1, 2, 3]; 
 
   return (
     <motion.div
@@ -77,18 +106,14 @@ const OTP: React.FC = () => {
       className="min-h-screen flex flex-col items-center justify-center bg-white text-black px-6"
     >
      
-
-      {/* OTP Instructions */}
       <motion.p
         variants={itemVariants}
         className="text-lg mb-4 text-gray-600 selection:bg-black selection:text-white"
       >
-        Enter the 4-digit code sent via SMS at 083078 72368.
+        Enter the 4-digit code sent to {email}.
       </motion.p>
 
-     
 
-      {/* OTP Input Fields */}
       <motion.div
         variants={itemVariants}
         className="flex gap-4 mb-6"
@@ -106,7 +131,6 @@ const OTP: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* Resend Code Option */}
       <motion.p
         variants={itemVariants}
         className="text-sm text-gray-500 mb-4"
@@ -122,9 +146,6 @@ const OTP: React.FC = () => {
         )}
       </motion.p>
 
-      
-
-      {/* Navigation Buttons */}
       <div className="flex gap-4">
         <motion.button
           variants={itemVariants}
@@ -140,13 +161,12 @@ const OTP: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="px-6 py-2 text-lg font-semibold bg-black text-white rounded-full hover:bg-gray-800 hover:cursor-pointer transition-colors duration-300"
+          onClick={handleVerify}
         >
           Verify
         </motion.button>
       </div>
 
-      {/* Verify OTP Button (Optional, added below navigation for clarity) */}
-      
     </motion.div>
   );
 };

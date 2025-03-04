@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const RentCalculation: React.FC = () => {
   // Animation variants with TypeScript types
@@ -13,6 +14,8 @@ const RentCalculation: React.FC = () => {
       },
     },
   };
+
+  const navigate = useNavigate();
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -93,7 +96,7 @@ const RentCalculation: React.FC = () => {
             <img
               src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1236.jpg"
               alt="Rent Calculation"
-              className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              className="w-full max-w-md object-cover rounded-lg \"
             />
           </motion.div>
         </div>
@@ -116,41 +119,80 @@ const RentCalculation: React.FC = () => {
           </motion.h2>
 
           <motion.div variants={itemVariants} className="space-y-6">
-            <p className="text-lg text-gray-300 text-center">
-              Here’s a sample calculation for renting an electric vehicle for 3 days:
-            </p>
+  <p className="text-lg text-gray-300 text-center">
+    This is how the algorithm is designed to calculate Rent
+  </p>
 
-            <div className="space-y-4">
-              {calculationSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="flex justify-between items-center p-4 bg-gray-900 rounded-lg"
-                >
-                  <div>
-                    <h3 className="text-xl font-semibold">{step.title}</h3>
-                    <p className="text-gray-300">{step.desc}</p>
-                  </div>
-                  <span className="text-xl font-bold">
-                    {step.amount >= 0 ? `+$${step.amount}` : `-$${Math.abs(step.amount)}`}
-                  </span>
-                </motion.div>
-              ))}
-              <motion.div
-                variants={itemVariants}
-                className="flex justify-between items-center p-4 bg-white text-black rounded-lg font-bold text-xl"
-              >
-                <span>Total Cost</span>
-                <span>${totalCost}</span>
-              </motion.div>
-            </div>
+  <div>
+    <h1 className="text-xl font-bold text-white">Vehicle Classification:</h1>
+    <p className="text-gray-400">
+      The rent is calculated based on the type of vehicle, base price, and the distance covered.
+    </p>
 
-            <p className="text-lg text-gray-300">
-              Our pricing is designed to be affordable and sustainable. The base rate varies 
-              by vehicle type, with discounts for eco-friendly options and additional fees 
-              clearly outlined upfront.
-            </p>
-          </motion.div>
+    <ul className="list-disc text-gray-300 pl-5 mt-2">
+      <li>
+        <span className="font-semibold">Type A:</span> Premium vehicles with high mileage and higher base price.
+      </li>
+      <li>
+        <span className="font-semibold">Type B:</span> Mid-range vehicles with moderate base price.
+      </li>
+      <li>
+        <span className="font-semibold">Type C:</span> Standard vehicles with lower mileage and the lowest base price.
+      </li>
+    </ul>
+
+    <h2 className="text-lg font-semibold text-white mt-4">Calculation Process:</h2>
+    <ol className="list-decimal text-gray-300 pl-5">
+      <li>Determine the selected vehicle type (A, B, or C).</li>
+      <li>Each type has a predefined base price and free distance limit.</li>
+      <li>
+        If the total distance traveled exceeds the free distance limit:
+        <ul className="list-disc pl-5 mt-1">
+          <li>Calculate the extra distance traveled.</li>
+          <li>Multiply extra distance by the per-km extra charge.</li>
+        </ul>
+      </li>
+      <li>Add the base price to the extra charge to get the total rent.</li>
+    </ol>
+
+    <h2 className="text-lg font-semibold text-white mt-4">Example Calculation:</h2>
+    <p className="text-gray-400">
+      Suppose a user selects a <span className="font-semibold text-white">Type B</span> vehicle for
+      <span className="font-semibold text-white"> 3 days</span>, traveling 
+      <span className="font-semibold text-white"> 180 km</span>.
+    </p>
+
+    <table className="border-collapse border border-gray-500 mt-3 text-gray-300 w-full text-sm">
+      <thead>
+        <tr>
+          <th className="border border-gray-500 px-2 py-1">Vehicle Type</th>
+          <th className="border border-gray-500 px-2 py-1">Base Price (per day)</th>
+          <th className="border border-gray-500 px-2 py-1">Free Distance</th>
+          <th className="border border-gray-500 px-2 py-1">Extra Charge per km</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border border-gray-500 px-2 py-1">Type B</td>
+          <td className="border border-gray-500 px-2 py-1">$80</td>
+          <td className="border border-gray-500 px-2 py-1">150 km</td>
+          <td className="border border-gray-500 px-2 py-1">$0.75</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p className="text-gray-400 mt-2">
+      <span className="font-semibold">Extra Distance:</span> 180 km - 150 km = 30 km
+    </p>
+    <p className="text-gray-400">
+      <span className="font-semibold">Extra Charge:</span> 30 km × $0.75 = $22.50
+    </p>
+    <p className="text-gray-400">
+      <span className="font-semibold">Total Rent:</span> (3 × $80) + $22.50 = <span className="font-semibold text-white">$262.50</span>
+    </p>
+  </div>
+</motion.div>
+
         </div>
       </motion.section>
 
@@ -223,6 +265,9 @@ const RentCalculation: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-white text-black text-lg font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300"
+            onClick={()=>{navigate("/")
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             Get Started
           </motion.button>

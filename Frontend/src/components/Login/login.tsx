@@ -4,6 +4,7 @@ import { auth, googleProvider, appleProvider } from "../../api/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const Login: React.FC = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -21,9 +22,9 @@ const Login: React.FC = () => {
         ? { email: input } 
         : { phone: input };
 
-      const response = await axios.post("http://localhost:3000/get-otp", data);
-      alert(response.data.message);
-      navigate("/otp");
+      await axios.post("http://localhost:3000/get-otp", data);
+     
+      navigate("/otp", {state:{email:input}});
     } catch (error) {
       console.error("Error sending OTP:", error);
       alert("Failed to send OTP. Please try again.");
@@ -33,7 +34,10 @@ const Login: React.FC = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
+      const email = result.user.email;
       console.log("Google User:", result.user);
+      localStorage.setItem("user", JSON.stringify({ email }));
+      navigate("/");
     } catch (error) {
       console.error("Google Login Failed:", error);
     }
@@ -43,6 +47,7 @@ const Login: React.FC = () => {
     try {
       const result = await signInWithPopup(auth, appleProvider);
       console.log("Apple User:", result.user);
+      navigate("/");
     } catch (error) {
       console.error("Apple Login Failed:", error);
     }
@@ -79,7 +84,7 @@ const Login: React.FC = () => {
             className="border border-gray-400 rounded-md py-2 w-full text-black hover:bg-gray-100 transition duration-300 cursor-pointer"
             onClick={handleGoogleLogin}
           >
-            Continue with Google
+            <img src=""/>Continue with Google
           </button>
 
           <button

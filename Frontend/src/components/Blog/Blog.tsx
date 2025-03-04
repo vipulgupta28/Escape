@@ -67,7 +67,7 @@ const Blog: React.FC = () => {
             <img
               src="https://img.freepik.com/free-vector/programming-concept-illustration_114360-1670.jpg"
               alt="Coding Technology"
-              className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              className="w-full max-w-md object-cover rounded-lg "
             />
           </motion.div>
         </div>
@@ -91,7 +91,7 @@ const Blog: React.FC = () => {
 
           <motion.div variants={itemVariants} className="space-y-8">
             <p className="text-lg text-gray-300">
-              At the heart of our sustainable travel app lies a robust and modern technology stack. 
+              At the heart of our vehicle renting app lies a robust and modern technology stack. 
               Here’s a deep dive into the tools and frameworks we used to bring this vision to life:
             </p>
 
@@ -105,6 +105,35 @@ const Blog: React.FC = () => {
                 you see on this page.
               </p>
             </div>
+
+            <div>
+  <h3 className="text-2xl font-semibold mb-2">2. Express with TypeScript</h3>
+  <p className="text-gray-300">
+    The backend HTTP server is built using <strong>Node.js</strong> with the <strong>Express</strong> framework, 
+    providing a lightweight yet powerful structure for handling API requests efficiently. Express allows us 
+    to create a fast, scalable, and modular backend while ensuring smooth communication with the frontend.
+  </p>
+  <p className="text-gray-300 mt-2">
+    By integrating <strong>TypeScript</strong>, we gain enhanced type safety, preventing runtime errors and 
+    improving code maintainability. This enables our developers to write clean, structured, and bug-free 
+    backend code with better IDE support and auto-completions.
+  </p>
+  <p className="text-gray-300 mt-2">
+    Our Express backend follows a <strong>RESTful API</strong> design pattern, allowing structured and 
+    predictable endpoints for client-server interaction. We also implement <strong>middleware</strong> for 
+    request validation, authentication, and logging, ensuring security and performance optimization.
+  </p>
+  <p className="text-gray-300 mt-2">
+    To manage user authentication and security, we use <strong>JWT (JSON Web Tokens)</strong> for 
+    token-based authentication and <strong>bcrypt</strong> for password hashing, ensuring that user data 
+    remains protected.
+  </p>
+  <p className="text-gray-300 mt-2">
+    Additionally, our backend connects seamlessly with <strong>PostgreSQL</strong> using <strong>Prisma</strong> 
+    as an ORM, allowing efficient database interactions with type safety, query optimization, and migrations.
+  </p>
+</div>
+
 
             <div>
               <h3 className="text-2xl font-semibold mb-2">2. Framer Motion</h3>
@@ -124,6 +153,37 @@ const Blog: React.FC = () => {
                 to desktop.
               </p>
             </div>
+
+            <div>
+  <h3 className="text-2xl font-semibold mb-2">3. Prisma and PostgreSQL</h3>
+  <p className="text-gray-300">
+    Our backend leverages <strong>PostgreSQL</strong>, a powerful, open-source relational database known for 
+    its reliability, performance, and advanced features like ACID compliance, indexing, and JSON support. 
+    PostgreSQL ensures data integrity and scalability, making it an ideal choice for handling complex queries 
+    and large datasets.
+  </p>
+  <p className="text-gray-300 mt-2">
+    To simplify database interactions, we use <strong>Prisma</strong> as our ORM (Object-Relational Mapper). 
+    Prisma provides a type-safe and intuitive API for querying the database, reducing the complexity of 
+    traditional SQL queries while improving code maintainability and developer productivity.
+  </p>
+  <p className="text-gray-300 mt-2">
+    With Prisma's schema-based approach, we define our data models in a declarative way and use 
+    <strong>Prisma Migrate</strong> to handle database migrations seamlessly. This ensures consistency in 
+    database structures across different environments.
+  </p>
+  <p className="text-gray-300 mt-2">
+    Additionally, Prisma offers powerful <strong>query optimizations</strong> and built-in support for 
+    <strong>relations, transactions, and connection pooling</strong>, making it an excellent choice for 
+    scalable applications.
+  </p>
+  <p className="text-gray-300 mt-2">
+    Our PostgreSQL database is hosted on a cloud platform, ensuring high availability and security. 
+    We implement <strong>connection pooling</strong> and <strong>caching strategies</strong> to optimize 
+    performance and reduce latency.
+  </p>
+</div>
+
 
             <div>
               <h3 className="text-2xl font-semibold mb-2">4. Component-Based Architecture</h3>

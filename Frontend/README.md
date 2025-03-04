@@ -5,4 +5,5 @@
 5. Cloud backend servers (multiple)
 6. Font
 7. Twilio 
-8. 
+8. Supabase
+9. 

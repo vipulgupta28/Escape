@@ -30,18 +30,19 @@ const MapComponent: React.FC = () => {
   }, []);
 
   return (
-    <MapContainer
-      center={userPosition}
-      zoom={13}
-      style={{ height: "600px", width: "80%", borderRadius:"20px", marginLeft:"20px" }}
-    >
-   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <UpdateMapCenter position={userPosition} />
-
-      <Marker position={userPosition}>
-        <Popup>You are here</Popup>
-      </Marker>
-    </MapContainer>
+    <div className="flex justify-center items-center px-4">
+      <MapContainer
+        center={userPosition}
+        zoom={13}
+        className="w-full max-w-4xl h-[400px] md:h-[600px] rounded-[20px]"
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <UpdateMapCenter position={userPosition} />
+        <Marker position={userPosition}>
+          <Popup>You are here</Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 };
 

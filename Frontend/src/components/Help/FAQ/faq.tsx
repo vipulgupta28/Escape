@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // Import AnimatePresence
 import {
-  FaSmile, FaExchangeAlt, FaFileInvoice, FaQuestionCircle,
-  FaEnvelope, FaCreditCard, FaUserFriends, FaBookOpen
+   FaUserCheck, FaClock, FaShieldAlt,
+  FaMapMarkerAlt, FaCreditCard, FaGasPump, FaTools
 } from "react-icons/fa";
 
 const faqs = [
-  { question: "Is there a free trial available?", answer: "Yes, you can try us for free for 30 days. If you want, we'll provide you with a free 30-minute onboarding call to get you up and running.", icon: <FaSmile /> },
-  { question: "Can I change my plan later?", answer: "Yes, you can change your plan anytime from your account settings.", icon: <FaExchangeAlt /> },
-  { question: "What is your cancellation policy?", answer: "You can cancel anytime, and your subscription will end at the end of the billing cycle.", icon: <FaQuestionCircle /> },
-  { question: "Can other info be added to an invoice?", answer: "Yes, you can add additional details while generating an invoice.", icon: <FaFileInvoice /> },
-  { question: "How does billing work?", answer: "We charge you based on the selected plan at the beginning of each cycle.", icon: <FaCreditCard /> },
-  { question: "How do I change my account email?", answer: "You can update your email in account settings.", icon: <FaEnvelope /> },
-  { question: "How does support work?", answer: "We provide 24/7 support through email and chat.", icon: <FaUserFriends /> },
-  { question: "Do you provide tutorials?", answer: "Yes, we have a knowledge base with guides and tutorials.", icon: <FaBookOpen /> }
+  { question: "What are the requirements to rent a vehicle?", answer: "You need a valid driving license, a government-issued ID, and a credit or debit card for payment.", icon: <FaUserCheck /> },
+  { question: "How long can I rent a vehicle?", answer: "You can rent a vehicle for a few hours to several weeks, depending on your preference.", icon: <FaClock /> },
+  { question: "Is insurance included in the rental price?", answer: "Yes, basic insurance is included, but you can opt for additional coverage.", icon: <FaShieldAlt /> },
+  { question: "Can I pick up and drop off the vehicle at different locations?", answer: "Yes, we offer flexible pick-up and drop-off locations based on availability.", icon: <FaMapMarkerAlt /> },
+  { question: "What payment methods do you accept?", answer: "We accept credit/debit cards, UPI, and digital wallets.", icon: <FaCreditCard /> },
+  { question: "Do I need to return the vehicle with a full tank?", answer: "Yes, vehicles should be returned with the same fuel level as when rented to avoid extra charges.", icon: <FaGasPump /> },
+  { question: "What if the vehicle breaks down during my trip?", answer: "We provide 24/7 roadside assistance to help you with any issues.", icon: <FaTools /> }
 ];
 
 const FAQ: React.FC = () => {
@@ -24,19 +23,19 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-white min-h-screen flex justify-center p-6">
+    <div className="relative bg-white min-h-screen flex justify-center p-6 md:p-12">
       {/* Grid Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.08) 1px,transparent 1px)] bg-[size:40px_40px]"></div>
 
       {/* FAQ Content */}
-      <div className="w-full max-w-3xl bg-white rounded-xl p-8 relative z-10 ">
+      <div className="w-full max-w-3xl bg-white rounded-xl p-6 md:p-8 relative z-10">
         {/* Header */}
         <div className="text-center">
           <div className="w-8 h-8 mx-auto mb-3 bg-black text-white rounded-full flex items-center justify-center">✦</div>
-          <h1 className="text-3xl font-bold text-gray-900 selection:bg-black selection:text-white">Frequently Asked Questions</h1>
+          <h1 className="text-3xl font-bold text-gray-900 selection:bg-black selection:text-white">Vehicle Rental FAQs</h1>
           <p className="text-gray-500 mt-2 selection:bg-black selection:text-white">
-            These are the most commonly asked questions about ESCAPE.<br />
-            Can't find what you're looking for? <a href="mailto:EscapeRoute@gmail.com" className="text-blue-500 underline">Mail us</a> or call <span className="font-medium">+91 8307872368</span>.
+            Got questions? We have answers! Can't find what you're looking for? <br />
+            <a href="mailto:support@ryde.com" className="text-blue-500 underline">Email us</a> or call <span className="font-medium">+91 8307872368</span>.
           </p>
         </div>
 

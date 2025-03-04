@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Input: React.FC = () => {
+
+  const [address, setAddress] = useState("");
+
+  const SearchVehicles = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/search-vehicles", {
+        address,
+      });
+      console.log("Vehicles Found:", response.data);
+    } catch (error) {
+      console.error("Error fetching vehicles:", error);
+    }
+  };
+
   return (
     <div className="  ">
       <div className="text-left space-y-8 mr-10">
@@ -13,6 +28,7 @@ const Input: React.FC = () => {
           <input
             type="text"
             placeholder="Enter vehicle drop location"
+            onChange={(e)=>setAddress(e.target.value)}
             className="border border-black py-3 px-4 rounded-[6px] bg-white text-black transition duration-300 focus:shadow-[0_0_20px_rgba(255,255,255,0.7)]"
           />
           <input
@@ -22,9 +38,10 @@ const Input: React.FC = () => {
           />
           <button className="bg-black text-white font-medium  w-30 rounded-[6px] py-3 
             relative transition duration-300 hover:cursor-pointer
-            hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]">
-  Search Vehicles
-</button>
+            hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]"
+            onClick={SearchVehicles}>
+            Search Vehicles
+            </button>
 
         </div>
       </div>

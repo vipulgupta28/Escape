@@ -15,7 +15,7 @@ const Counter = ({ target, duration }) => {
           let start = 0;
           const step = Math.ceil(target / (duration / 16));
 
-          clearInterval(intervalRef.current); // Ensure no duplicate intervals
+          clearInterval(intervalRef.current);
 
           intervalRef.current = setInterval(() => {
             start += step;
@@ -25,7 +25,7 @@ const Counter = ({ target, duration }) => {
             } else {
               setCount(start);
             }
-          }, 16); // ~60FPS
+          }, 16);
         }
       },
       { threshold: 0.5 }
@@ -39,125 +39,152 @@ const Counter = ({ target, duration }) => {
     };
   }, [target, duration]);
 
-  return <p ref={ref} className="text-3xl font-bold">{count.toLocaleString()}</p>;
+  return <p ref={ref} className="text-4xl font-bold">{count.toLocaleString()}</p>;
 };
 
-// QR Component
 const Features = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center text-center px-6 text-white">
-      {/* Heading */}
-      <h1 className="text-5xl md:text-6xl font-bold mb-6">
-        Enterprise Ready Customer Features
-      </h1>
-
-      {/* Subtext */}
-      <p className="text-gray-400 max-w-2xl text-lg mb-6">
-        Experience seamless car rentals for every occasion—be it a road trip with friends, 
-        a stylish ride for a night out, or a peaceful evening drive.
-      </p>
-
-      {/* Explore Features Button */}
-      <button className="flex items-center gap-3 bg-black text-white font-medium px-6 py-3 rounded-lg hover:cursor-pointer transition duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]">
-        <ArrowDown className="text-white" />
-        Explore Features
-      </button>
-
-      {/* Stats Section with Animated Counting Effect */}
-      <div className="flex flex-col md:flex-row gap-10 md:gap-20 mt-10">
-        <div className="text-center">
-          <h2 className="text-lg font-medium text-gray-300">Rentals Completed Today</h2>
-          <Counter target={100000} duration={1500} />
-        </div>
-
-        <div className="text-center">
-          <h2 className="text-lg font-medium text-gray-300">Expert Support</h2>
-          <p className="text-3xl font-bold">24/7</p>
-        </div>
-
-        <div className="text-center">
-          <h2 className="text-lg font-medium text-gray-300">Active Users</h2>
-          <Counter target={500000} duration={2000} />
-        </div>
+    <div className="min-h-screen  text-white px-6 py-16 font-poppins overflow-hidden relative">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute w-96 h-96 bg-white rounded-full blur-3xl -top-48 -left-48" />
+        <div className="absolute w-96 h-96 bg-gray-300 rounded-full blur-3xl -bottom-48 -right-48" />
       </div>
 
-      {/* Feature Animation Section */}
-      <div className="flex items-center justify-center w-full py-10">
-        {/* Horizontal Line */}
-        <div className="relative flex items-center w-full max-w-lg">
-          {/* Left Icon */}
-          <div className="relative z-10 flex items-center justify-center w-16 h-16 bg-black rounded-full">
-            <DoorOpen className="text-white w-8 h-8" />
-          </div>
-
-          {/* Connecting Line */}
-          <div className="flex-grow h-[3px] bg-gray-600"></div>
-
-          {/* Center Animated Icon */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="relative z-20 flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-lg"
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
-            >
-              <div className="w-8 h-8 bg-black rounded-lg"></div>
-            </motion.div>
-
-            {/* Checkmark */}
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="absolute bottom-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center"
-            >
-              <Check className="text-white w-4 h-4" />
-            </motion.div>
-          </motion.div>
-
-          {/* Connecting Line */}
-          <div className="flex-grow h-[3px] bg-gray-600"></div>
-
-          {/* Right Icon */}
-          <div className="relative z-10 flex items-center justify-center w-16 h-16 bg-black rounded-full">
-            <Cloud className="text-white w-8 h-8" />
-          </div>
-        </div>
-      </div>
-
-      {/* Image Grid Section */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
-  {[
-    "https://img.freepik.com/free-vector/family-enjoying-vacation-interstate-highway-photographing-scenic-sunset-view_335657-2485.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/make-it-rain-illustration-concept_114360-857.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/people-traveling-worldwide-flat-concept_23-2148513313.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/road-trip-illustration-concept_114360-12204.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid"
-  ].map((src, index) => (
-    <motion.div
-          key={index}
-          className="flex flex-col items-center"
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 120, damping: 10 }}
-          viewport={{ once: true }} // Ensures animation happens once when in view
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Heading Section */}
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold text-center mb-6 bg-white/10 backdrop-blur-md inline-block px-6 py-2 rounded-full"
         >
-          <motion.img
-            src={src}
-            alt="Vacation"
-            className="w-120 h-60 object-cover rounded-lg shadow-lg"
-           
-            transition={{ type: "spring", stiffness: 150 }}
-          />
-          <button className="mt-2 px-4 py-2 bg-black text-white font-medium rounded-lg transition duration-300 hover:cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.7)]">
-            Show Details
-          </button>
-        </motion.div>
-  ))}
-</div>
+          Enterprise-Ready Features
+        </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-gray-400 text-lg md:text-xl text-center max-w-2xl mx-auto mb-10"
+        >
+          Seamless car rentals for every journey—road trips, stylish nights out, or peaceful drives.
+        </motion.p>
+
+        {/* Explore Button */}
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255,255,255,0.3)" }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        
+          className="flex items-center gap-3 mx-auto bg-white text-black font-medium px-6 py-3 rounded-full shadow-md"
+        >
+          <ArrowDown className="w-5 h-5" />
+          Explore Features
+        </motion.button>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16"
+        >
+          {[
+            { label: "Rentals Today", value: <Counter target={100000} duration={1500} /> },
+            { label: "Expert Support", value: "24/7" },
+            { label: "Active Users", value: <Counter target={500000} duration={2000} /> }
+          ].map((stat, index) => (
+            <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/10">
+              <p className="text-lg font-medium text-gray-300 mb-2">{stat.label}</p>
+              <div className="text-4xl font-bold">{stat.value}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Feature Animation Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center justify-center py-20"
+        >
+          <div className="relative flex items-center w-full max-w-2xl">
+            <motion.div
+              className="flex items-center justify-center w-16 h-16 bg-white text-black rounded-full shadow-lg"
+              whileHover={{ scale: 1.1 }}
+            >
+              <DoorOpen className="w-8 h-8" />
+            </motion.div>
+
+            <div className="flex-grow h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+            <motion.div
+              className="relative flex items-center justify-center w-24 h-24 bg-white rounded-full shadow-xl"
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                className="w-10 h-10 bg-black rounded-lg"
+              />
+              <motion.div
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute -bottom-2 -right-2 w-8 h-8 bg-black rounded-full flex items-center justify-center border-2 border-white"
+              >
+                <Check className="text-white w-5 h-5" />
+              </motion.div>
+            </motion.div>
+
+            <div className="flex-grow h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+            <motion.div
+              className="flex items-center justify-center w-16 h-16 bg-white text-black rounded-full shadow-lg"
+              whileHover={{ scale: 1.1 }}
+            >
+              <Cloud className="w-8 h-8" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Image Grid Section */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+          {[
+            "https://img.freepik.com/free-vector/family-enjoying-vacation-interstate-highway-photographing-scenic-sunset-view_335657-2485.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
+            "https://img.freepik.com/free-vector/make-it-rain-illustration-concept_114360-857.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
+            "https://img.freepik.com/free-vector/people-traveling-worldwide-flat-concept_23-2148513313.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
+            "https://img.freepik.com/free-vector/road-trip-illustration-concept_114360-12204.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid"
+          ].map((src, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="group relative overflow-hidden rounded-xl"
+            >
+              <motion.img
+                src={src}
+                alt={`Feature ${index + 1}`}
+                className="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+              />
+              <motion.button
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                className="absolute bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-white text-black font-medium rounded-full shadow-md transition-all duration-300"
+              >
+                Show Details
+              </motion.button>
+              </motion.div>
+          
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import ProfilePic from "../../assets/images/ProfilePic.jpg";
 
 const AboutUs: React.FC = () => {
   // Animation variants with TypeScript types
@@ -26,6 +28,7 @@ const AboutUs: React.FC = () => {
     },
   };
 
+  const navigate = useNavigate();
   // Mission item type
   interface MissionItem {
     title: string;
@@ -71,9 +74,9 @@ const AboutUs: React.FC = () => {
               through innovative technology and eco-conscious solutions.
             </p>
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
+              
+              className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 hover:cursor-pointer transition-colors duration-300"
+              onClick={()=>navigate("/")}
             >
               Join the Movement
             </motion.button>
@@ -86,7 +89,7 @@ const AboutUs: React.FC = () => {
             <img
               src="https://img.freepik.com/free-vector/about-us-concept-illustration_114360-639.jpg"
               alt="Sustainable Travel"
-              className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              className="w-full max-w-md object-cover rounded-lg"
             />
           </motion.div>
         </div>
@@ -137,22 +140,26 @@ const AboutUs: React.FC = () => {
           >
             Our Team
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="">
             {[
-              { name: "Jane Doe", role: "CEO & Founder" },
-              { name: "John Smith", role: "Chief Technology Officer" },
-              { name: "Emma Wilson", role: "Head of Sustainability" },
+              { name: "Vipul Gupta", role: "CEO & Founder" },
+
             ].map((member, index) => (
               <motion.div
-                key={index}
-                variants={itemVariants}
-                className="text-center p-6"
-                whileHover={{ y: -10 }}
-              >
-                <div className="w-32 h-32 mx-auto mb-4 bg-gray-200 rounded-full" />
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
-              </motion.div>
+  key={index}
+  variants={itemVariants}
+  className="text-center p-6 flex flex-col items-center"
+  whileHover={{ y: -10 }}
+>
+  <img
+    src={ProfilePic} // Replace with actual image URL
+    alt={member.name}
+    className="w-42 h-42 object-cover rounded-full mb-4"
+  />
+  <h3 className="text-xl font-semibold">{member.name}</h3>
+  <p className="text-gray-600">{member.role}</p>
+</motion.div>
+
             ))}
           </div>
         </div>
@@ -184,6 +191,11 @@ const AboutUs: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-white text-black text-lg font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300"
+            onClick={()=> {navigate("/")
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+            }
+            
           >
             Get in Touch
           </motion.button>

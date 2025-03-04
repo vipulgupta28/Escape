@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Model: React.FC = () => {
   // Animation variants with TypeScript types
@@ -13,6 +14,8 @@ const Model: React.FC = () => {
       },
     },
   };
+
+  const navigate = useNavigate();
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -206,6 +209,10 @@ const Model: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
+            onClick={()=>{
+              navigate("/")
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             Get Started
           </motion.button>

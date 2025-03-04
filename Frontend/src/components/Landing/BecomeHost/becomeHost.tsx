@@ -1,68 +1,153 @@
-import React, { useState, useEffect } from "react";
-import { Lock, Car, IndianRupee, Shield } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { Lock, Car, IndianRupee, Shield, User, Settings, LogOut, Mail } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BecomeHost: React.FC = () => {
-  const images = [
-    "https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7965.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/hand-holding-car-keys_1212-832.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/businessman-with-money_3446-627.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid",
-    "https://img.freepik.com/free-vector/father-shaking-hands-with-insurance-agent_74855-4412.jpg?ga=GA1.1.1918914287.1739298480&semt=ais_hybrid"
+  const ref = useRef(null);
+  const navigate = useNavigate();
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
+
+  const menuItems = [
+    { icon: <Lock />, text: "Sign in", component: "SignIn" },
+    { icon: <Car />, text: "Host Your Car", component: "HostCar" },
+    { icon: <IndianRupee />, text: "Earn Income", component: "EarnIncome" },
+    { icon: <Shield />, text: "Get Insurance", component: "GetInsurance" },
+    { icon: <Settings />, text: "Account Settings", component: "AccountSettings" },
+    { icon: <User />, text: "Admin Dashboard", component: "AdminDashboard" },
+    { icon: <Mail />, text: "Email Templates", component: "EmailTemplates" },
+    { icon: <LogOut />, text: "Sign out", component: "SignOut" },
   ];
 
-  const buttons = [
-    { icon: <Lock />, text: "Signin" },
-    { icon: <Car />, text: "Host Your Car" },
-    { icon: <IndianRupee />, text: "Earn Income" },
-    { icon: <Shield />, text: "Get Insurance" }
-  ];
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Animation Variants
+  const cardVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+  };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000); // Change every 4 seconds
+  const textVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.2 } }
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.4 } },
+    hover: { scale: 1.05, boxShadow: "0 0 20px rgba(255,255,255,0.3)" },
+    tap: { scale: 0.95 }
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: index * 0.1 }
+    })
+  };
 
   return (
-    <div className="flex justify-center items-center h-screen gap-30">
-      {/* Image Slideshow with Animation */}
-      <div className="w-[400px] h-[350px] overflow-hidden rounded-xl relative">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentImageIndex}
-            src={images[currentImageIndex]}
-            alt="Slideshow"
-            className="absolute w-full h-full object-cover"
-            initial={{ opacity: 0, y: 400 }} // Enter smoothly from bottom
-            animate={{ opacity: 1, y: 0 }} // Set to normal position
-            exit={{ opacity: 0, y: -400 }} // Exit smoothly to top
-            transition={{ duration: 0.8, ease: "easeInOut" }} // Smooth easing
-          />
-        </AnimatePresence>
+    <div
+      ref={ref}
+      className="min-h-screen  font-poppins text-white flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Background Grid and Glow */}
+      <div className="absolute inset-0 ">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute w-full h-full bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px]" />
+          <div className="absolute w-96 h-96 bg-white rounded-full blur-3xl -top-48 -left-48 opacity-10" />
+          <div className="absolute w-96 h-96 bg-gray-300 rounded-full blur-3xl -bottom-48 -right-48 opacity-10" />
+        </div>
       </div>
 
-      {/* Text Section */}
-      <div className="flex flex-col gap-5 text-left w-[400px]">
-        <h2 className="font-bold text-6xl">Become a Host </h2>
-        <p>Rent your car on CarO and earn rental income</p>
+      {/* Main Content */}
+      <div className="relative z-10 flex items-center gap-16 px-8 py-12">
+        {/* Left Side - Profile Card */}
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 w-80 shadow-[0_0_30px_rgba(255,255,255,0.2)] border border-white/20"
+        >
+          {/* Profile Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center gap-4 mb-6"
+          >
+            <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center text-2xl font-bold">
+              JD
+            </div>
+            <div>
+              <p className="text-lg font-semibold">John Doe</p>
+              <p className="text-sm text-gray-400">john.doe@email.com</p>
+            </div>
+          </motion.div>
 
-        {/* Buttons */}
-        <div className="flex flex-col gap-2">
-          {buttons.map((button, index) => (
-            <button
-              key={index}
-              className={`flex flex-row gap-5 w-80 py-2 rounded-[6px] transition duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] hover:cursor-pointer text-left pl-3 
-                ${currentImageIndex === index ? "shadow-[0_0_20px_rgba(255,255,255,0.7)]" : "border-white"} border-1`}
-            >
-              {button.icon}
-              {button.text}
-            </button>
-          ))}
-        </div>
+          {/* Menu Items */}
+          <div className="space-y-2">
+            {menuItems.map((item, index) => (
+              <motion.div
+                key={index}
+                custom={index}
+                variants={menuItemVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                onHoverStart={() => setHoveredItem(index)}
+                onHoverEnd={() => setHoveredItem(null)}
+                className={`flex items-center gap-4 p-3 rounded-lg cursor-pointer transition-all duration-300 ${
+                  hoveredItem === index
+                    ? "bg-white/20 shadow-[0_0_20px_rgba(255,255,255,0.3)] border border-white/30"
+                    : "hover:bg-white/10"
+                }`}
+              >
+                {item.icon}
+                <span>{item.text}</span>
+                {hoveredItem === index && (
+                  <motion.span
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="ml-auto text-gray-400 text-sm"
+                  >
+                    &lt;{item.component} /&gt;
+                  </motion.span>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right Side - Text Content */}
+        <motion.div
+          variants={textVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="max-w-md"
+        >
+          <h2 className="text-5xl font-bold mb-6 leading-tight">
+            Become an Escapist
+          </h2>
+          <p className="text-gray-400 text-lg mb-8">
+            Share your car with ease, earn passive income, and be part of a trusted community. 
+            We handle the details, you enjoy the rewards.
+          </p>
+          <motion.button
+            variants={buttonVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            onClick={()=>{
+              navigate("becomeahost")
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="px-6 py-3 bg-white text-black rounded-full hover:cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] animation duration-400 font-semibold text-lg shadow-md"
+          >
+            Start Hosting
+          </motion.button>
+        </motion.div>
       </div>
     </div>
   );
