@@ -1,3 +1,5 @@
+## Things to buy
+
 1. Firebase Auth
 2. Google Maps
 3. Google search
@@ -6,4 +8,3 @@
 6. Font
 7. Twilio 
 8. Supabase
-9. 
