@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Lock, Car, IndianRupee, Shield, User, Settings, LogOut, Mail } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -21,8 +21,21 @@ const BecomeHost: React.FC = () => {
   ];
 
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Animation Variants
+  useEffect(() => {
+      const user = localStorage.getItem("user");
+      setIsLoggedIn(!!user);
+    }, []);
+
+    const handleStartHosting = () => {
+      if (isLoggedIn) {
+        navigate("/becomeahost");
+      } else {
+        navigate("/login");
+      }
+    };
+ 
   const cardVariants = {
     hidden: { opacity: 0, x: -100 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
@@ -140,10 +153,10 @@ const BecomeHost: React.FC = () => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             onClick={()=>{
-              navigate("becomeahost")
+              handleStartHosting();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="px-6 py-3 bg-white text-black rounded-full hover:cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] animation duration-400 font-semibold text-lg shadow-md"
+            className="px-6 py-3 bg-white text-black rounded-[6px] hover:cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] animation duration-400 font-semibold text-lg shadow-md"
           >
             Start Hosting
           </motion.button>

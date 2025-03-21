@@ -93,7 +93,7 @@ const Banner: React.FC = () => {
             animate={isInView ? "visible" : "hidden"}
          
             onClick={()=>window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="mt-6 px-8 py-4 text-lg hover:cursor-pointer font-semibold bg-white text-black rounded-full shadow-lg  hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] transition-all duration-300"
+            className="mt-6 px-8 py-4 text-lg hover:cursor-pointer font-semibold bg-white text-black rounded-[6px] shadow-lg  hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] transition-all duration-300"
           >
             Start Your Journey
           </motion.button>

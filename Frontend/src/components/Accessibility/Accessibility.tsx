@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 
 const Accessibility: React.FC = () => {
@@ -12,6 +13,8 @@ const Accessibility: React.FC = () => {
       },
     },
   };
+
+  const navigate = useNavigate();
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -53,9 +56,14 @@ const Accessibility: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={()=>{
+                navigate("/")
+                window.scrollTo({top:0, behavior:"smooth"})
+                
+              }}
               className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
             >
-              Learn More
+              Get Started
             </motion.button>
           </motion.div>
 
@@ -63,7 +71,7 @@ const Accessibility: React.FC = () => {
             <img
               src="https://img.freepik.com/free-vector/accessibility-concept-illustration_114360-1146.jpg"
               alt="Accessibility"
-              className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              className="w-full max-w-md object-cover rounded-lg "
             />
           </motion.div>
         </div>
@@ -137,6 +145,10 @@ const Accessibility: React.FC = () => {
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={()=>{
+              navigate("/help")
+              window.scrollTo({top:0, behavior:"smooth"})
+            }} 
             className="px-8 py-3 bg-black text-white text-lg font-semibold rounded-full hover:bg-gray-800 transition-colors duration-300"
           >
             Contact Us

@@ -76,10 +76,10 @@ const Features = () => {
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(255,255,255,0.3)" }}
+          
           transition={{ duration: 0.5, delay: 0.4 }}
         
-          className="flex items-center gap-3 mx-auto bg-white text-black font-medium px-6 py-3 rounded-full shadow-md"
+          className="flex items-center gap-3 mx-auto hover:cursor-pointer bg-white text-black font-medium px-6 py-3 rounded-[6px] hover:cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.7)] animation duration-400 shadow-md"
         >
           <ArrowDown className="w-5 h-5" />
           Explore Features

@@ -63,7 +63,7 @@ const Insurance: React.FC = () => {
             <img
               src="https://img.freepik.com/free-vector/insurance-concept-illustration_114360-137.jpg"
               alt="Insurance Protection"
-              className="w-full max-w-md object-cover rounded-lg shadow-2xl"
+              className="w-full max-w-md object-cover rounded-lg "
             />
           </motion.div>
         </div>

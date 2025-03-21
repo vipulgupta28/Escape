@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { motion } from "framer-motion";
+import { LatLngExpression } from "leaflet"; 
 
-const DEFAULT_POSITION: [number, number] = [28.6139, 77.209]; // New Delhi
+const DEFAULT_POSITION: LatLngExpression = [28.6139, 77.209]; 
 
-const UpdateMapCenter: React.FC<{ position: [number, number] }> = ({ position }) => {
+const UpdateMapCenter: React.FC<{ position: LatLngExpression }> = ({ position }) => {
   const map = useMap();
   useEffect(() => {
     map.setView(position, map.getZoom());
@@ -13,7 +15,7 @@ const UpdateMapCenter: React.FC<{ position: [number, number] }> = ({ position })
 };
 
 const MapComponent: React.FC = () => {
-  const [userPosition, setUserPosition] = useState<[number, number]>(DEFAULT_POSITION);
+  const [userPosition, setUserPosition] = useState<LatLngExpression>(DEFAULT_POSITION); // ✅ Type updated
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -30,7 +32,12 @@ const MapComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center px-4">
+    <motion.div 
+      className="flex justify-center items-center px-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
       <MapContainer
         center={userPosition}
         zoom={13}
@@ -42,7 +49,7 @@ const MapComponent: React.FC = () => {
           <Popup>You are here</Popup>
         </Marker>
       </MapContainer>
-    </div>
+    </motion.div>
   );
 };
 

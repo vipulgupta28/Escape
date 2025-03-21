@@ -35,10 +35,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6  selection:bg-white selection:text-black">Company</h3>
             <ul className="space-y-4 flex flex-col  text-white">
-              <Link to="/About" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">About us</Link>
+              <Link to="/About" onClick={()=>{
+                 window.scrollTo({ top: 0, behavior: "smooth" })
+              }} className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">About us</Link>
               
-              <Link to="/Career" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Careers</Link>
-              <Link to="/Blogs" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Blog</Link>
+              <Link to="/Career"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }}
+               className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Careers</Link>
+               
+              <Link to="/Blogs"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }}
+               className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Blog</Link>
             </ul>
           </div>
 
@@ -46,17 +57,39 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6  selection:bg-white selection:text-black">Informtion</h3>
             <ul className="space-y-4 flex flex-col text-white">
               <Link to="" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Profit </Link>
-              <Link to="/Rent" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Rent Calculation</Link>
-              <Link to="/BusinessModel" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Business Model</Link>
+              <Link to="/Rent"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }}
+              className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Rent Calculation</Link>
+
+              <Link to="/BusinessModel"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }} 
+              className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Business Model</Link>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-6  selection:bg-white selection:text-black">Safety</h3>
             <ul className="space-y-4 flex flex-col text-white">
-              <Link to="/CommunityGuidelines" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Community Guidelines</Link>
-              <Link to="" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Insurance</Link>
-              <Link to="" className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Accessibility</Link>
+              <Link to="/CommunityGuidelines"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }} 
+              className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Community Guidelines</Link>
+
+              <Link to="/InsurancePage"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }}  
+              className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Insurance</Link>
+              <Link to="/Accessibilitypage"
+              onClick={()=>{
+                window.scrollTo({top:0, behavior:"smooth"})
+              }}  
+              className="hover:text-gray-400 transition hover:cursor-pointer  selection:bg-white selection:text-black">Accessibility</Link>
             </ul>
           </div>
 
@@ -100,7 +133,7 @@ const Footer = () => {
             <a href="#" className="text-white font-medium hover:text-gray-400 transition  selection:bg-white selection:text-black">Terms</a>
           </div>
           <div>
-            <span className="font-medium text-white selection:bg-white selection:text-black">&copy; {new Date().getFullYear()} Escape Technologies Inc.</span>
+            <span className="font-medium text-white selection:bg-white selection:text-black">&copy; 2025 Escape Technologies Inc.</span>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className=" text-white p-4 font-poppins top-0 z-1000 ">
+    <nav className=" text-white p-4 font-poppins top-0 z-100 ">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/">
@@ -113,16 +113,16 @@ const Navbar: React.FC = () => {
             </>
           ) : (
             <>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div >
                 <Link to="/login">
-                  <button className="px-4 py-2 rounded-lg bg-white text-black hover:bg-gray-200 transition-all duration-300">
+                  <button className="px-4 py-2 font-medium hover:cursor-pointer hover:bg-gray-200 rounded-lg bg-white text-black hover:bg-gray-200 transition-all duration-300">
                     Login
                   </button>
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link to="/signup">
-                  <button className="px-4 py-2 rounded-lg bg-white text-black hover:bg-gray-200 transition-all duration-300">
+              <motion.div >
+                <Link to="/login">
+                  <button className="px-4 py-2 font-medium hover:cursor-pointer rounded-lg bg-white text-black hover:bg-gray-200 transition-all duration-300">
                     Sign Up
                   </button>
                 </Link>
