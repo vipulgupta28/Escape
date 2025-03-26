@@ -14,6 +14,7 @@ const Host: React.FC = () => {
     address: "",
   });
 
+  //@ts-ignore
   const [files, setFiles] = useState<{ [key: string]: File | File[] | null }>({});
   const [vehicleInfo, setVehicleInfo] = useState({}); // State for vehicle info
 
@@ -61,6 +62,7 @@ const Host: React.FC = () => {
           onNext={handleNext}
           onPrev={handlePrev}
           onFileUpload={handleFileUpload}
+          //@ts-ignore
           onVehicleInfo={handleVehicleInfo} // Pass vehicle info handler
         />
       )}

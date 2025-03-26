@@ -121,7 +121,7 @@ const OTP: React.FC = () => {
         {indexes.map((_, index) => (
           <input
             key={index}
-            ref={(el) => (inputRef.current[index] = el)}
+            ref={(el) => {inputRef.current[index] = el}}
             type="text"
             maxLength={1}
             className="h-12 w-12 text-center text-xl font-bold bg-white text-black border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all duration-200"

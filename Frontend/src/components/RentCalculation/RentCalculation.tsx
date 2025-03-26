@@ -55,6 +55,7 @@ const RentCalculation: React.FC = () => {
 
   const totalCost = calculationSteps.reduce((sum, step) => sum + step.amount, 0);
 
+  console.log(totalCost);
   return (
     <div className="relative min-h-screen bg-white text-black overflow-hidden">
       {/* Hero Section */}
