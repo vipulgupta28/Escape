@@ -13,7 +13,8 @@ Package Manager | npm
 Follow the steps below to run the project on your local development environment:
 
 Clone the repository
-```git clone https://www.github.com/vipulgupta28/Escape```
+``` bash 
+git clone https://www.github.com/vipulgupta28/Escape```
 
 For Frontend
 ```cd Frontend```
