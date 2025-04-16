@@ -14,17 +14,31 @@ Follow the steps below to run the project on your local development environment:
 
 Clone the repository
 ``` bash 
-git clone https://www.github.com/vipulgupta28/Escape```
+git clone https://www.github.com/vipulgupta28/Escape
+```
 
 For Frontend
-```cd Frontend```
-```npm install```
-```npm run dev```
+```bash 
+cd Frontend
+```
+
+```bash
+npm install
+```
+```bash 
+npm run dev
+```
 
 For Backend
-```cd Backend```
-```npm install```
-``` npm run dev```
+```bash
+cd Backend
+```
+```bash 
+npm install
+```
+```bash
+npm run dev
+```
 
 
 
