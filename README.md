@@ -1,21 +1,19 @@
 ﻿# Escape
-Escape is an innovative online vehicle renting platform that aims to simplify and modernize the way people rent vehicles. Whether you're a city commuter, a traveler, or someone looking for a convenient ride, Escape provides a seamless experience to browse, compare, and rent vehicles of your choice.
 
-The tech stack on which escape is built is React typescript for frontend and Node in express using typescript. For styling the CSS framework that is used is Tailwind CSS. 
+Escape is a Peer-to-Peer (P2P) marketplace business model for renting vehicles. In this model, car owners, referred to as Hosts, will have the ability to list their vehicles on my platform, while renters (users) can browse, select, and book these vehicles for temporary use. This application will serve as an intermediary, facilitating seamless communication and transactions between Hosts and renters. It will offer features like secure payments, real-time availability, insurance options, and user reviews to build trust. The goal is to provide a convenient, affordable, and efficient vehicle rental experience for both parties while generating revenue through commission fees, service charges, and potential partnerships with insurance providers.
 
-Escape solves these problems by offering:
+Area     | Tech Used
+Frontend | React + TypeScript
+Backend  | Node.js + Express + TypeScript
+Styling  | Tailwind CSS
+Package Manager | npm
 
- A wide range of vehicles: cars, bikes, scooters, and bicycles
-
- Transparent pricing with real-time cost calculation (including extra kilometers)
-
- Detailed listings with features, reviews, and benefits
-
- Smooth booking process with policy agreements and secure transactions
-
-Whether you're planning a weekend getaway, daily commute, or just need a ride on the go — Escape makes renting a vehicle easy, fast, and enjoyable.
 
 ## Setting Up Project locally
+Follow the steps below to run the project on your local development environment:
+
+Clone the repository
+```git clone https://www.github.com/vipulgupta28/Escape```
 
 For Frontend
 ```cd Frontend```
