@@ -20,23 +20,14 @@ git clone https://www.github.com/vipulgupta28/Escape
 For Frontend
 ```bash 
 cd Frontend
-```
-
-```bash
 npm install
-```
-```bash 
 npm run dev
 ```
 
 For Backend
 ```bash
 cd Backend
-```
-```bash 
 npm install
-```
-```bash
 npm run dev
 ```
 
